@@ -2,57 +2,14 @@
 
 ## Objectives
 
-1. Basic Sinatra Application structure.
-2. The routing DSL basics of `get`.
-3. Mounting a Controller.
+1. Modular Sinatra Applications
+2. Mounting a Controller
 4. Multi-Controller Application structure.
 5. Mounting multiple controllers
 
-## The Sinatra DSL
-
-Any application that requires the `sinatra` library will get access to methods like: `get` and `post`. These methods provide the ability to instantly transform a ruby application into an application that can respond to HTTP requests.
-
-## Basic Sinatra Applications
-
-First, make sure sinatra is installed by running `gem install sinatra` in your terminal.
-
-The simplest Sinatra application would be:
-
-File: `sinatra_basic.rb`
-```ruby
-require 'sinatra'
-
-get '/' do
-  "Hello, World!"
-end
-```
-
-You could start this web application by running `ruby sinatra_basic.rb`. You'll see something similar to:
-
-```
-$ ruby sinatra_basic.rb
-== Sinatra (v1.4.6) has taken the stage on 4567 for development with backup from Thin
-Thin web server (v1.6.3 codename Protein Powder)
-Maximum connections set to 1024
-Listening on localhost:4567, CTRL+C to stop
-```
-
-This is telling us that Sinatra has started a web application running on your computer listening to HTTP requests at port `4567`, the Sinatra default. If you start this application and navigate to http://localhost:4567 you'll see "Hello, World!" in your browser. Go back to your terminal running the Sinatra application and stop it by typing `CTRL+C`. You should see:
-
-```
-Listening on localhost:4567, CTRL+C to stop
-^CStopping ...
-Stopping ...
-== Sinatra has ended his set (crowd applauds)
-[00:01:11] (wip-lesson) what-is-sinatra
-$
-```
-
-This is the most basic Sinatra application structure and is actually pretty uncommon. More commonly, Sinatra is used in a modular style encapsulated by Controller Classes and booted via the `config.ru` Rack convention.
-
 ## Modular Sinatra Applications
 
-Web applications, even simple Sinatra ones, tend to require a certain degree of complexity. To handle this, Sinatra is more commonly used through the Modular Sinatra Pattern.
+Web applications, even simple Sinatra ones, tend to require a certain degree of complexity. To handle this, Sinatra is more commonly used through the Modular Sinatra Pattern (over the single file `app.rb`).
 
 ### `config.ru`
 
@@ -64,16 +21,16 @@ File: `config.ru`
 ```ruby
 require 'sinatra'
 
-require_relative './sinatra_modular.rb'
+require_relative './app.rb'
 
 run Application
 ```
 
-In the first line of `config.ru` we load the Sinatra library. The second line requires our application file, defined in `sinatra_modular.rb`, which we will discuss in a moment. The last line of the file uses `run` to start the application represented by the ruby class `Application`, which is defined in `sinatra_modular.rb`.
+In the first line of `config.ru` we load the Sinatra library. The second line requires our application file, defined in `app.rb`, which we will discuss in a moment. The last line of the file uses `run` to start the application represented by the ruby class `Application`, which is defined in `app.rb`.
 
-### Sinatra Controllers: `sinatra_modular.rb`
+### Sinatra Controllers: `app.rb`
 
-`config.ru` requires a valid Sinatra Controller to `run`. A Sinatra Controller is simply a ruby class that inherits from `Sinatra::Base`. This inheritance transforms into a web application by giving it a Rack-compatible interface behind the scenes via the Sinatra framework. Open `sinatra_modular.rb`
+`config.ru` requires a valid Sinatra Controller to `run`. A Sinatra Controller is simply a ruby class that inherits from `Sinatra::Base`. This inheritance transforms into a web application by giving it a Rack-compatible interface behind the scenes via the Sinatra framework. Open `app.rb`
 
 ```ruby
 class Application < Sinatra::Base
@@ -135,13 +92,13 @@ class OrdersController < Sinatra::Base
 end
 ```
 
-#### Mounting Multiple Controllers in `config.ru`.
+#### Mounting Multiple Controllers in `complex.config.ru`.
 
-Now that our application logic spans more than one controller class, our `config.ru` that starts our application becomes a bit more complicated.
+Now that our application logic spans more than one controller class, our `complex.config.ru` that starts our application becomes a bit more complicated.
 
 First, our environment must load both controller files.
 
-`config.ru`:
+`complex.config.ru`:
 ```ruby
 require 'sinatra'
 
@@ -151,7 +108,7 @@ require_relative 'app/controllers/orders_controller'
 
 Then, we must mount both classes. However, only one class can be specificed to be `run`, the other class must be loaded as something called MiddleWare that we won't get into, suffice to say, you simply `use` it instead of `run`.
 
-`config.ru`:
+`complex.config.ru`:
 ```ruby
 require 'sinatra'
 
