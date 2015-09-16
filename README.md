@@ -121,7 +121,7 @@ run OrdersController
 
 Which classes you `use` or `run` matter, but we won't worry about that now, just make sure you only ever `run` one class and the rest our loaded via `use`.
 
-You can run that complex application with `rackup complex.config.ru`, explicitly providing the Rackup file to use (`config.ru` is the default). Once the application loads and is listening on port 4567, navigate to http://localhost:4567/products , http://localhost:4567/products/42, http://localhost:4567/orders , and http://localhost:4567/orders/2600 to see the application in action. Stop it with `CTRL+C`
+You can run that complex application with `rackup complex.config.ru`, explicitly providing the Rackup file to use (`config.ru` is the default). Once the application loads and is listening on port 9292, navigate to http://localhost:9292/products , http://localhost:9292/products/42, http://localhost:9292/orders , and http://localhost:9292/orders/2600 to see the application in action. Stop it with `CTRL+C`
 
 ## Resources
 
