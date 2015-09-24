@@ -1,5 +1,6 @@
 tags:
-  - tag1
+  - sinatra
+  - ruby
 languages:
-  - language1
-resources: 0
+  - ruby
+resources: 2
