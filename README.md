@@ -40,13 +40,31 @@ class Application < Sinatra::Base
 end
 ```
 
-We simply create a new class `Application` and inherit from `Sinatra::Base`. Our class constant could have been anything descriptive of the functionality provided by the class. The classes that inherit from `Sinatra::Base` and define the HTTP interface for our application are called Controllers.
+We simply create a new class `Application` and inherit from `Sinatra::Base`.Our class constant could have been anything descriptive of the functionality provided by the class. The classes that inherit from `Sinatra::Base` and define the HTTP interface for our application are called Controllers.
 
 In a single controller application, a single file defining the controller, like `app.rb`, will suffice. That controller will define every single URL and response of our application.
 
 Controllers define an HTTP method using the sinatra routing DSL provided by methods like `get` and `post`. When you enclose these methods within a ruby class that is a Sinatra Controller, these HTTP routes are scoped and attached to the controller.
 
 The final step in creating a controller is mounting it in `config.ru`. Mounting a Controller means telling Rack that part of your web application is defined within the following class. We do this in config.ru by using `run Application` where `run` is the mounting method and `Application` is the controller class that inherits from `Sinatra::Base` and is defined in a previously required file.
+
+The class named we defined in our application controller (`app.rb`) is just a normal Ruby class. We could have named it `MyToDoApp`:
+
+```ruby
+class MyToDoApp < Sinatra::Base
+
+  get '/' do
+    "Hello, World!"
+  end
+
+end
+```
+
+If this was our class name, we would need to change `config.ru` to run the appropriate class:
+
+```ruby
+run MyToDoApp
+```
 
 ## Resources
 
