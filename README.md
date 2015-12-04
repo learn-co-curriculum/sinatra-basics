@@ -1,13 +1,19 @@
 # Sinatra Basics
 
+## Overview
+
+We'll discuss modular Sinatra applications and mounting a controller. 
+
 ## Objectives
 
-1. Modular Sinatra Applications
-2. Mounting a Controller
+1. Distinguish between single file Sinatra apps and modular Sinatra apps
+2. Explain the purpose of the `config.ru` and what is included in the file
+3. Define and create a Sinatra controller 
+2. Mount a Sinatra controller in `config.ru`
 
 ## Modular Sinatra Applications
 
-Web applications, even simple Sinatra ones, tend to require a certain degree of complexity. To handle this, Sinatra is more commonly used through the Modular Sinatra Pattern (over the single file `app.rb`).
+Web applications, even simple Sinatra ones, tend to require a certain degree of complexity. For example, your application might have multiple routes, route-handlers, and configuration. To handle this, Sinatra is more commonly used through the Modular Sinatra Pattern (over the classical, single file `app.rb` pattern).
 
 ### `config.ru`
 
@@ -24,7 +30,7 @@ require_relative './app.rb'
 run Application
 ```
 
-In the first line of `config.ru` we load the Sinatra library. The second line requires our application file, defined in `app.rb`, which we will discuss in a moment. The last line of the file uses `run` to start the application represented by the ruby class `Application`, which is defined in `app.rb`.
+In the first line of `config.ru` we load the Sinatra library. The second line requires our application file, defined in `app.rb`. The last line of the file uses `run` to start the application represented by the ruby class `Application`, which is defined in `app.rb`.
 
 ### Sinatra Controllers: `app.rb`
 
@@ -46,7 +52,7 @@ In a single controller application, a single file defining the controller, like 
 
 Controllers define an HTTP method using the sinatra routing DSL provided by methods like `get` and `post`. When you enclose these methods within a ruby class that is a Sinatra Controller, these HTTP routes are scoped and attached to the controller.
 
-The final step in creating a controller is mounting it in `config.ru`. Mounting a Controller means telling Rack that part of your web application is defined within the following class. We do this in config.ru by using `run Application` where `run` is the mounting method and `Application` is the controller class that inherits from `Sinatra::Base` and is defined in a previously required file.
+The final step in creating a controller is mounting it in `config.ru`. Mounting a controller means telling Rack that part of your web application is defined within the following class. We do this in config.ru by using `run Application` where `run` is the mounting method and `Application` is the controller class that inherits from `Sinatra::Base` and is defined in a previously required file.
 
 The class named we defined in our application controller (`app.rb`) is just a normal Ruby class. We could have named it `MyToDoApp`:
 
