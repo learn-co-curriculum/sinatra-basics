@@ -1,5 +1,5 @@
 require 'sinatra'
 
-require_relative './sinatra_modular.rb'
+require_relative './app.rb'
 
 run Application
