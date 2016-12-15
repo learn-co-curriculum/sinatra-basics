@@ -46,7 +46,7 @@ class Application < Sinatra::Base
 end
 ```
 
-We simply create a new class `Application` and inherit from `Sinatra::Base`.Our class constant could have been anything descriptive of the functionality provided by the class. The classes that inherit from `Sinatra::Base` and define the HTTP interface for our application are called Controllers.
+We simply create a new class `Application` and inherit from `Sinatra::Base`. Our class constant could have been anything descriptive of the functionality provided by the class. The classes that inherit from `Sinatra::Base` and define the HTTP interface for our application are called Controllers.
 
 In a single controller application, a single file defining the controller, like `app.rb`, will suffice. That controller will define every single URL and response of our application.
 
@@ -78,3 +78,5 @@ run MyToDoApp
 * [Companies Using Sinatra](http://www.sinatrarb.com/wild.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-basics' title='Sinatra Basics'>Sinatra Basics</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-basics'>Sinatra Basics</a> on Learn.co and start learning to code for free.</p>
