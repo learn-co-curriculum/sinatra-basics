@@ -34,7 +34,7 @@ In the first line of `config.ru` we load the Sinatra library. The second line re
 
 ### Sinatra Controllers: `app.rb`
 
-`config.ru` requires a valid Sinatra Controller to `run`. A Sinatra Controller is simply a ruby class that inherits from `Sinatra::Base`. This inheritance transforms into a web application by giving it a Rack-compatible interface behind the scenes via the Sinatra framework. Open `app.rb`
+`config.ru` requires a valid Sinatra Controller to `run`. A Sinatra Controller is simply a Ruby `Class` that inherits from `Sinatra::Base`. This inheritance transforms our plain old Ruby class into a web application by giving it a Rack-compatible interface through inheriting from the "base" of the Sinatra framework. Open `app.rb`
 
 ```ruby
 class Application < Sinatra::Base
