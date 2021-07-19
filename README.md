@@ -22,7 +22,6 @@ The first new convention this pattern introduces is a `config.ru` file. The purp
 
 A common 'config.ru' might look like:
 
-File: `config.ru`
 ```ruby
 require 'sinatra'
 
