@@ -11,6 +11,7 @@ We'll discuss modular Sinatra applications and mounting a controller.
 3. Define and create a Sinatra controller 
 2. Mount a Sinatra controller in `config.ru`
 
+
 ## Modular Sinatra Applications
 
 Web applications, even simple Sinatra ones, tend to require a certain degree of complexity. For example, your application might have multiple routes, route-handlers, and configuration. To handle this, Sinatra is more commonly used through the Modular Sinatra Pattern (over the classical, single file `app.rb` pattern).
